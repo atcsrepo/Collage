@@ -1,0 +1,50 @@
+{
+  "name": "collage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "start": "cross-env NODE_ENV=development MONGOURL=mongodb://localhost:27017/ SECRET=temporarystring PORT=8000 nodemon --delay 4 ./server/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-middleware": "^3.6.0",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bcrpyt": "^2.0.0",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.3",
+    "bunyan": "^1.8.12",
+    "cross-env": "^5.2.0",
+    "debug": "^3.0.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "masonry-layout": "^4.2.0",
+    "mongodb": "^2.2.31",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-masonry-component": "^5.0.7",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}

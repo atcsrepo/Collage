@@ -1,0 +1,428 @@
+body{
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  min-width: 600px;
+}
+
+.navbar{
+  background-color: #ECEFF1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  min-width: 380px;
+  justify-content: space-between;
+}
+
+.nav-item{
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.linkable:hover{
+  color: white;
+  cursor: pointer;
+  background: black;
+}
+
+.mainpage-setup{
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wall-holder{
+  display: inline-block;
+  width: calc(100% - 31px);
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.ghost-placeholder{
+  width: 30px;
+  height: 100%;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+#mywallarea{
+  margin: 0 auto;
+  margin-top: 3rem;
+  width:96%;
+  height: 88%;
+  border: 2px solid black;
+  background-color: #CFD8DC;
+}
+
+#mywall-display{
+  width: 98%;
+  height: 90%;
+  margin: 0 auto;
+  margin: 1%;
+  border: 2px solid grey;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.image-div-class{
+  width: 20%;
+}
+
+.image-del-button{
+  display: inline-block;
+  position: absolute;
+  right: 5;
+  top: 5;
+  cursor: pointer;
+  color: rgba(247, 0, 0, 0);
+}
+
+.active-panel{
+  color: rgba(247, 0, 0, 1) !important;
+}
+
+.active-panel:hover{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image-element-class{
+  width: 100%;
+}
+
+.wallsTab{
+  margin-top: 0;
+  position: fixed;
+  top: 2.3rem;
+  right: 0;
+  height: calc(100% - 67px);
+  pointer-events: none;
+  z-index: 500;
+}
+
+#display-tab-div{
+  background-color: #455A64;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 5px 0px;
+  width: 150px;
+  position: relative;
+  top: -90%;
+  text-align: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color:white;
+  display: inline-block;
+  transform: translate(40%, 240%) rotate(-90deg);
+  box-sizing: border-box;
+  cursor: pointer; 
+  pointer-events: all;
+}
+  
+.miniPanelsArea{
+  width: 0px;
+  margin: 0 auto;
+  display: inline-block;
+  background-color: #455A64;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+@keyframes slideopen {
+  from{width: 0px;}
+  to{width: 330px;}
+}
+
+.opentab-class{
+  animation: slideopen 0.5s forwards;
+  pointer-events: all;
+}
+
+.miniDisplay-frame{
+  width: 300px;
+  height: 200px;
+  display: inline-block;
+  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: grey;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.miniDisplay-viewArea{
+  width: 96%;
+  height:96%;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  box-sizing: border-box;
+  background-color: white;
+  overflow: hidden;
+}
+
+.miniImage-div{
+  width: 20%;
+}
+
+.miniImage{
+  width: 100%;
+}
+
+.overlay{
+  z-index: 1000;
+  width: 100%;
+  min-width: 600px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.modal{
+  border: 2px solid #0C525E;
+  border-radius: 5px;
+  background-color: #13232f;
+  z-index: 1500;
+}
+
+.setting-modal{
+  width: 360px;
+  align-self: center;
+}
+
+.modal-title{
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  padding: 8px;
+  margin: 8px;
+  width: 90%;
+  border-bottom: 2px solid #B4E8F1;
+}
+
+.setting-body{
+  height: 300px; 
+  overflow-y: scroll;
+}
+
+.setting-block{
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 16px;
+}
+
+.setting-table{
+  width: 100%;
+}
+
+.setting-msg{
+  color: white;
+  font-size: 16px;
+  margin-top: -8px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.modal-footer{
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  border-top: 2px solid #B4E8F1;
+  margin-top: 8px;
+}
+
+.setting-footer{
+  padding: 0.75rem 0;
+}
+
+#add-modal-footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.setting-title{
+  color: white;
+  font-weight: bold;
+  background-color: #3ABED5;
+  padding: 8px;
+}
+
+.modalLabel{
+  color: white;
+}
+
+.setting-submit-button{
+  color: white;
+  background-color: #1ab188;
+  padding: 8px;
+  display: inline-block;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sharemodal{
+  width: 400px;
+  align-self: center;
+}
+
+.copy-button{
+  color: white;
+  background-color:#1ab188;
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px;
+  margin: 16 0 16 8;
+  cursor: pointer;
+}
+
+.sharemodal-main{
+  width: 100%;
+  display: flex;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.sharecode{
+  display: inline-block;
+  width: 100%;
+}
+
+.sharemodal-footer{
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+#addModal{
+  text-align: center;
+  width: 450px;
+  align-self: center;
+}
+
+#addModal-title{
+  display:inline-block;
+  width: 80%;
+  padding: 8 16;
+  font-weight: bold;
+  margin: 16 0 16 0;
+  box-sizing: border-box;
+  background-color: #1ab188;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#preview-display{
+  width: 90%;
+  height: 250px;
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#displayImage{
+  max-height: 100%;
+  max-width: 100%;
+  align-self: center;
+}
+
+#search-input-div{
+  display: inline-block;
+  width: 70%;
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+
+.search-button{
+  display: inline-block;
+  background-color:#1ab188;
+  color: white; 
+  padding: 8 16;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 18%;
+  font-weight: bold;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#mywall-footer{
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-start: center;
+  align-items: center;
+}
+
+.modal-button{
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  width: 20%;
+  align-self: center;
+}
+
+.share-wall-button{
+  background-color: #34B2F7;
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.add-image-button{
+  background-color:#1ab188;
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.clear-board-button{
+  background-color: #F21414;
+  color: white;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.close-modal{
+  background-color: #F33030;
+  color: white;
+  font-size: 1.1rem;
+}
+
+input{
+  width: 100%;
+  padding: 8px;
+  margin: 16px 0px;
+}
+
+.footer-text{
+  color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #ECEFF1;
+  width: 100%;
+  padding: 5px; 
+  text-align: center;
+}

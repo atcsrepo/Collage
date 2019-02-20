@@ -1,0 +1,360 @@
+body{
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  min-width: 380px;
+}
+
+.navbar{
+  background-color: silver;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  min-width: 380px;
+  justify-content: space-between;
+  z-index: 500;
+}
+
+.nav-item{
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.linkable:hover{
+  color: white;
+  cursor: pointer;
+  background: black;
+}
+
+.home-banner{
+  margin: 24px 0px;
+  background-color: #455A64;
+  padding: 20px 0px;
+}
+
+.banner-title{
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  margin: 16px 0px;
+}
+
+.banner-text{
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px 0px;
+}
+
+.banner-button{
+  background-color:#1ab188;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  padding: 12px;
+  cursor: pointer;
+  margin: 16px 0px;
+}
+
+.miniprev-text{
+  color: white;
+  font-size: 24px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  border-bottom: 1.5px solid white;
+}
+
+.home-area{
+  height: calc(100% - 90px);
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.mini-panels-area{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.minipreview-area{
+  background-color: #455A64;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+}
+
+.miniDisplay-frame{
+  min-width: 300px;
+  height: 250px;
+  display: inline-block;
+  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: grey;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.miniDisplay-viewArea{
+  width: 100%;
+  height: 96%;
+  margin-top: 1.5%;
+  box-sizing: border-box;
+  background-color: white;
+  overflow: hidden;
+}
+
+.miniImage-div{
+  width: 20%;
+}
+
+.miniImage{
+  width: 100%;
+}
+
+.ghostframe{
+  width: 300px;
+  height: 1px;
+  display: inline-block;
+  margin: 8px;
+}
+
+.overlay{
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  min-width: 380px;
+  justify-content: space-around;
+}
+
+.modal{
+  border: 2px solid #0C525E;
+  border-radius: 5px;
+  text-align: center;
+  width: 360px;
+  align-self: center;
+  z-index: 1000;
+  background-color: #13232f;
+}
+
+.modal-button{
+  display: inline-block;
+  padding: 8 16;
+  font-weight: bold;
+  margin: 16 24 16 24;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+}
+
+.title-option{
+  display:inline-block;
+  width: 40%;
+  padding: 8 16;
+  font-weight: bold;
+  margin: 16 0 16 0;
+  box-sizing: border-box;
+  background-color: #444452;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.title-option:hover{
+  background-color: #179F81 !important;
+  color: white;
+}
+
+.active-op{
+  background-color: #1ab188;
+  color: white;
+}
+
+.modal-title{
+  border-bottom: 2px solid white;
+}
+
+.modal-body{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.modal-footer{
+  border-top: 2px solid white;
+}
+
+.ext-login-panel{
+  text-align:center;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.ext-auth{
+  display: inline-block;
+  width: 120px;
+  padding: 3px 5px 3px 5px;
+  margin: 8px 6px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+}
+
+.modal-text{
+  color: white;
+  margin-bottom: 8px;
+}
+
+.logo{
+  max-width: 24px;
+  max-height: 24px;
+  align-self: left;
+}
+
+.auth-text{
+  display: inline-block;
+  width: 100%;
+  align-self: center;
+  cursor: pointer;
+}
+
+a{
+  text-decoration: none;
+}
+
+.twitter{
+  color: white;
+  background-color: 1da1f2;
+}
+
+.github{
+  color: black;
+  background-color: white;
+}
+
+.google{
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-weight: medium;
+  background-color: white;
+}
+
+.submit-cred{
+  background-color:#1ab188;
+  color: white;
+}
+
+.close-modal{
+  background-color: #F33030;
+  color: white;
+}
+
+.active-auth{
+  background-color:#1ab188;
+  color: white;
+}
+
+.modal-form{
+  width: 85%;
+  margin: 0 auto;
+}
+
+input{
+  width: 100%;
+  padding: 5px;
+  margin: 8 0;
+}
+
+table{
+  width: 100%;
+}
+
+.input-label{
+  color:white;
+  padding: 5px;
+  text-align: right;
+}
+
+.mainpage-setup{
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.wall-holder{
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+#mywallarea{
+  margin: 0 auto;
+  margin-top: 3rem;
+  width:96%;
+  height: 87%;
+  border: 2px solid black;
+  background-color: #CFD8DC;
+}
+
+#mywall-display{
+  width: 98%;
+  height: 90%;
+  margin: 0 auto;
+  margin: 1%;
+  border: 2px solid grey;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: white;
+}
+
+.image-div-class{
+  width: 20%;
+}
+
+.image-del-button{
+  display: inline-block;
+  position: absolute;
+  right: 5;
+  top: 5;
+  cursor: pointer;
+  color: rgba(247, 0, 0, 0);
+}
+
+.active-panel{
+  color: rgba(247, 0, 0, 1) !important;
+}
+
+.active-panel:hover{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.image-element-class{
+  width: 100%;
+}
+
+.footer-text{
+  color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #ECEFF1;
+  width: 100%;
+  padding: 5px; 
+  text-align: center;
+  margin-top: 24px;
+}

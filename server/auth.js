@@ -1,10 +1,10 @@
-var session = require('express-session');
-var passport = require('passport');
-var GitHubStrat = require('passport-github').Strategy;
-var googleStrat = require('passport-google-oauth').OAuth2Strategy;
-var local = require('passport-local');
-var bcrypt = require('bcrypt');
-var ObjectId = require('mongodb').ObjectId;
+const session = require('express-session'),
+      passport = require('passport'),
+      GitHubStrat = require('passport-github').Strategy,
+      googleStrat = require('passport-google-oauth').OAuth2Strategy,
+      local = require('passport-local'),
+      bcrypt = require('bcrypt'),
+      ObjectId = require('mongodb').ObjectId;
 
 module.exports = function(app, db){
   
@@ -12,10 +12,11 @@ module.exports = function(app, db){
    *Configuration settings for express-session and passport
    *Not actually configured for production
   */
+  
   app.use(session({ 
     secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
   }));
   
   app.use(passport.initialize());
@@ -58,18 +59,18 @@ module.exports = function(app, db){
   ));
   
   //Configuration for Google OAuth
-  /*
+  
   passport.use(new googleStrat({
       clientID: process.env.GGCLIENTID,
       clientSecret: process.env.GGCLIENTSECRET,
-      callbackURL: 'http://localhost:8000/callback/google'       
+      callbackURL: 'https://glaze-tank.glitch.me/callback/google'       
     },
     function (accessToken, refreshToken, profile, done) {
       db.collection('users').findOne({$and: [{loginType: 'google'}, {extID: profile.id}]}, (err, user) => {
         if (user) {
           return done(err, user);
         } else {
-          createProfile('google', profile.id, db, done);
+          createProfile("", "", "", 'google', profile.id, db, done);
         }
       });
     }
@@ -80,19 +81,19 @@ module.exports = function(app, db){
   passport.use(new GitHubStrat({
       clientID: process.env.GHCLIENTID,
       clientSecret: process.env.GHCLIENTSECRET,
-      callbackURL: "http://localhost:8000/callback/github"
+      callbackURL: "https://glaze-tank.glitch.me/callback/github"
     },
     function(accessToken, refreshToken, profile, done) {
       db.collection('users').findOne({$and: [{loginType: 'github'}, {extID: profile.id}]}, (err, user) => {
         if (user) {
           return done(err, user);
         } else {
-          createProfile('github', profile.id, db, done);
+          createProfile("", "", "", 'github', profile.id, db, done);
         }
       })
     }
   ));
-  */
+  
   /*
    *Route for registering local account
    *Performs username and e-mail check prior to hashing password and creating initial user profile and logging in
@@ -101,7 +102,7 @@ module.exports = function(app, db){
   app.route('/register')
     .post((req, res, next) => {
       
-      //Account creation
+      //Local account creation
       
       var username = req.body.username,
           email = req.body.email,
@@ -129,31 +130,7 @@ module.exports = function(app, db){
               }
             }
           } else {
-            bcrypt.hash(password, 8, function(err, hash){
-              var wallID = (Date.now().toString(36) 
-                            + Math.random().toString(36).substr(2,5))
-                            .toUpperCase();
-              
-              var profile = {};
-              
-              profile.username = username;
-              profile.extID = '';
-              profile.loginType = 'local';
-              profile.email = email;
-              profile.password = hash;
-              profile.walls = [{
-                wallNum: 1,
-                wallID: wallID,
-                imageLinks: [],
-                lastUpdated: ''
-              }];
-   
-              db.collection('users').insert(profile, (err, result) =>{
-                if (err) throw err;
-                
-                next();
-              });
-            });
+            createProfile(username, password, email, "local", "", db, next);
           }
         });
     }, (req, res, next) => {
@@ -240,20 +217,20 @@ module.exports = function(app, db){
  **done is callback provided by passport-oauth login to pass control/info
  *Includes possibility of adding in local username/password post login
  */
-
-function createProfile(loginType, id, db, done){
+//createProfile(username, password, email, loginType, id, db, done)
+function createProfile(username, password, email, loginType, id, db, done){
   var wallID = (Date.now().toString(36) 
                 + Math.random().toString(36).substr(2,5))
                 .toUpperCase();
   
-  bcrypt.hash('', 8, (err, hash) => {
+  bcrypt.hash(password, 8, (err, hash) => {
     if (err) throw err;
     
     var profile = {};
-    profile.username = '';
+    profile.username = username;
     profile.extID = id;
     profile.loginType = loginType;
-    profile.email = '';
+    profile.email = email;
     profile.password = hash;
     profile.walls = [{
       wallNum: 1,
@@ -264,14 +241,18 @@ function createProfile(loginType, id, db, done){
         
     db.collection('users').insert(profile, (err, result) => {
       if (err) throw err;
-              
-      db.collection('users').findOne(
-        {$and: [{loginType: loginType}, {extID: id}]}, 
-        (err, user) => {
-          if(err) throw err;
-          return done(err, user);
-        }
-      );
+      
+      if (loginType === "local") {
+        return done()
+      } else {
+        db.collection('users').findOne(
+          {$and: [{loginType: loginType}, {extID: id}]}, 
+          (err, user) => {
+            if(err) throw err;
+            return done(err, user);
+          }
+        );
+      }
     });
   });
 }
